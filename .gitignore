@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.vercel/
+*.log
+
+# spec interna (contém a seção 7, que não pode ser publicada)
+portfolio_abner_spec.md

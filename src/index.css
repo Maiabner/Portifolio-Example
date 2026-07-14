@@ -1,0 +1,212 @@
+/* ===== TOKENS:START (paleta institucional azul + verde, inspirada no universo Votorantim) ===== */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg: #F7FAFC;
+  --surface: #FFFFFF;
+  --text: #102033;
+  --muted: #607086;
+  --border: #D7E2ED;
+  --primary: #0054A6;
+  --primary-deep: #063B78;
+  --primary-text: #FFFFFF;
+  --secondary: #EAF4FF;
+  --secondary-text: #004A8F;
+  --accent: #00A443;
+  --accent-soft: #EAF8EF;
+  --accent-text: #071F12;
+  --radius: 16px;
+  --font-titulo: "Instrument Serif", Georgia, serif;
+  --font-corpo: "Manrope", "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+  --atencao: #D8A625;
+  --teal-deep: #06192E;
+}
+/* ===== TOKENS:END ===== */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-corpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-bg {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+}
+.site-bg > :not(header) {
+  position: relative;
+  z-index: 1;
+}
+.site-bg::before,
+.site-bg::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transform: translate3d(0, 0, 0);
+}
+.site-bg::before {
+  top: 10vh;
+  right: -12vw;
+  width: min(44vw, 620px);
+  height: min(44vw, 620px);
+  border-radius: 42% 58% 50% 50%;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 38% 36%, color-mix(in srgb, var(--primary) 54%, transparent) 0 18%, transparent 62%),
+    radial-gradient(circle at 68% 70%, color-mix(in srgb, var(--accent) 45%, transparent) 0 14%, transparent 58%);
+}
+.site-bg::after {
+  left: -10vw;
+  bottom: 12vh;
+  width: min(36vw, 480px);
+  height: min(32vw, 430px);
+  border-radius: 58% 42% 48% 52%;
+  opacity: 0.13;
+  background:
+    radial-gradient(circle at 42% 44%, color-mix(in srgb, var(--secondary) 84%, transparent) 0 28%, transparent 68%),
+    radial-gradient(circle at 72% 58%, color-mix(in srgb, var(--accent) 38%, transparent) 0 12%, transparent 58%);
+}
+
+.font-titulo {
+  font-family: var(--font-titulo);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ---- Sombras studio-clean (multicamadas) ---- */
+.btn-primary-shadow {
+  box-shadow:
+    0 1px 2px 0 rgba(6, 59, 120, 0.12),
+    0 4px 4px 0 rgba(6, 59, 120, 0.1),
+    0 9px 6px 0 rgba(6, 59, 120, 0.06),
+    0 17px 7px 0 rgba(6, 59, 120, 0.02),
+    inset 0 2px 8px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-secondary-shadow {
+  box-shadow:
+    0 0 0 0.5px rgba(16, 32, 51, 0.06),
+    0 4px 30px rgba(16, 32, 51, 0.08);
+}
+.card-clean {
+  box-shadow: 0 4px 16px rgba(16, 32, 51, 0.08);
+}
+.card-clean-lg {
+  box-shadow:
+    0 12px 40px rgba(16, 32, 51, 0.12),
+    0 4px 12px rgba(16, 32, 51, 0.06);
+}
+
+/* ---- Entradas por scroll ---- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* ---- Tipografia display (tracking negativo premium) ---- */
+.tracking-display {
+  letter-spacing: 0;
+}
+.tracking-heading {
+  letter-spacing: 0;
+}
+
+/* ---- Ticker de habilidades (marquee com máscara nas bordas) ---- */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left 72s linear infinite;
+}
+.ticker-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+
+/* ---- Marquee gigante (assinatura serif antes do contato) ---- */
+.marquee-giant .ticker-track {
+  animation-duration: 46s;
+}
+
+/* ---- Palavra ciclante ---- */
+@keyframes role-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-role-fade-in {
+  animation: role-fade-in 0.4s ease-out;
+}
+
+@keyframes breathe-aura-one {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-28px, 18px, 0) scale(1.12) rotate(8deg);
+  }
+}
+@keyframes breathe-aura-two {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(22px, -16px, 0) scale(1.1) rotate(-7deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
