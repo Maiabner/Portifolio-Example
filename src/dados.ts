@@ -107,7 +107,7 @@ export const TRAJETORIA = [
     periodo: "2023 – hoje",
     titulo: "Coordenador de Operações",
     org: "Sion Energia",
-    texto: "Entrei sem experiência no setor e em cinco meses já respondia pela operação como um todo, com equipe de seis pessoas e reporte direto aos sócios. De lá para cá, um ciclo por ano: operação criada do zero em 2023, produto novo em 2024, camada de dados e conhecimento em 2025, crise de contraparte e produto para o novo momento de mercado em 2026.",
+    texto: "Entrei sem experiência no setor e em cinco meses respondia pela operação de varejo ponta a ponta, hoje atuo com  equipe de seis pessoas e reporte direto aos sócios. De lá para cá, um ciclo por ano: operação criada do zero em 2023, produto novo em 2024, camada de dados e conhecimento em 2025, crise de contraparte e produto para o novo momento de mercado em 2026.",
   },
 ];
 
@@ -161,6 +161,7 @@ export const COMPETENCIAS = [
 // Texto de caso: parágrafos e listas com frase-âncora, na ordem da spec.
 export type Bloco =
   | { tipo: "p"; texto: string }
+  | { tipo: "sub"; texto: string }
   | { tipo: "lista"; ancora: string; itens: string[] };
 
 export type CasePortfolio = {
@@ -188,423 +189,667 @@ export type CasePortfolio = {
 
 export const CASES: CasePortfolio[] = [
   {
-    id: "motor-de-decisao",
+    id: "escala-continuidade",
     numero: "01",
-    titulo: "Motor de decisão de contratação",
-    tituloCompleto: "Motor de decisão de contratação de energia",
+    titulo: "Escala e continuidade para uma operação crítica",
+    tituloCompleto: "Escala e continuidade para uma operação crítica",
     card: {
       problema:
-        "Cada gestor tinha a própria planilha e a recomendação vinha de experiência, não de cálculo.",
+        "A operação dependia da memória de poucas pessoas, de rotinas manuais e de planilhas que já não suportavam o crescimento.",
       solucao:
-        "Construí o modelo de ponto de equilíbrio e a ferramenta que centralizou a decisão.",
+        "Redesenhei os fluxos críticos, reconstruí a camada de dados, transformei planilhas em sistemas internos e organizei a base de conhecimento da área.",
       resultado:
-        "De 45 minutos a 2 horas por análise para segundos, executável por qualquer pessoa do time.",
+        "Cada analista passou de aproximadamente 45 para 100 clientes atendidos. Cerca de 24 dias-pessoa foram devolvidos à operação todos os meses.",
     },
     contexto: [
       {
         tipo: "p",
         texto:
-          "A decisão de migrar para o mercado livre depende de um cálculo de ponto de equilíbrio entre a conta atual do cliente no ambiente regulado e o custo projetado no ambiente livre, somado à escolha do tipo de energia adequado ao seu perfil de consumo.",
+          "Em 2025, a empresa substituiu a diretoria de duas áreas enquanto a operação do mercado livre acumulava mais clientes, regras, prazos e obrigações regulatórias.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Boa parte do conhecimento necessário para manter a área funcionando não estava documentada. Processos críticos dependiam da memória de duas pessoas.",
       },
     ],
     problema: [
       {
         tipo: "p",
         texto:
-          "Cada gestor mantinha a própria planilha. O input era manual, o método variava por pessoa e boa parte da recomendação vinha de experiência, não de cálculo. Um analista sênior levava 45 minutos por análise. Um júnior levava de 1h40 a 2h, e ainda precisava de apoio.",
+          "A operação combinava rotinas mensais manuais, planilhas individuais e conhecimento transmitido oralmente.",
       },
       {
         tipo: "p",
         texto:
-          "O efeito prático não era só lentidão. A escolha do perfil de energia ficava sob julgamento individual, sem rastro auditável, e a capacidade de análise estava concentrada em duas ou três pessoas. Escalar a operação significava contratar sêniores, não distribuir método.",
+          "Isso criava dois problemas ao mesmo tempo: baixa capacidade de escala e risco de continuidade.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "As planilhas centrais também haviam atingido seu limite. Com quase 100 MB e vários usuários simultâneos, travavam com frequência. Apenas a atualização das bases levava aproximadamente 20 minutos e ainda podia falhar durante o processo.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Crescer significaria contratar continuamente mais profissionais experientes para sustentar uma estrutura que já apresentava sinais de saturação.",
       },
     ],
     oQueFiz: [
       {
         tipo: "p",
         texto:
-          "Desenhei a estrutura de cálculo e o modelo matemático, e conduzi a construção da ferramenta com dois analistas do meu time.",
+          "Tratei o problema como o redesenho do sistema operacional da área, não como um projeto isolado de automação.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Conduzi o trabalho com um analista sênior do time, que teve participação central na execução.",
       },
       {
         tipo: "lista",
-        ancora: "O sistema reúne quatro camadas de decisão:",
+        ancora: "Atuamos em quatro frentes:",
         itens: [
-          "Modelo de ponto de equilíbrio, que determina a partir de qual preço a migração compensa para aquele cliente específico.",
-          "Leitura consolidada das 12 últimas faturas da distribuidora, para trabalhar com consumo real e não com média declarada.",
-          "Recomendação automática do perfil de energia adequado ao consumo, com faixas de cenário otimista, neutro e pessimista.",
-          "Otimização de demanda e modalidade tarifária, que identifica o dinheiro que o cliente deixa na mesa antes mesmo de migrar.",
+          "Automação das rotinas críticas. Sete atividades mensais foram transformadas em ferramentas internas.",
+          "Reconstrução da camada de dados. O processamento pesado saiu das planilhas e foi levado para Python e nuvem.",
+          "Transformação de planilhas em sistemas internos. Regras, validações e rastreabilidade passaram a fazer parte do fluxo.",
+          "Construção da base de conhecimento. Criamos wiki, procedimentos operacionais e fluxogramas para processos antes transmitidos oralmente.",
         ],
       },
       {
         tipo: "p",
         texto:
-          "Somei a isso uma análise de crédito antecipada, que identifica antes da negociação os pontos que costumavam travar o fechamento junto ao fornecedor.",
+          "O objetivo não era apenas executar as mesmas tarefas mais rápido. Era permitir que a operação funcionasse sem depender da memória das pessoas que a construíram.",
       },
     ],
     resultado: [
       {
         tipo: "p",
         texto:
-          "A análise passou de 45 minutos a 2 horas para segundos, com o perfil recomendado já calculado e os cenários prontos para apresentação.",
+          "O ciclo mensal de relatórios, que ocupava cinco pessoas durante cinco dias, passou a ser executado por duas pessoas em aproximadamente três horas.",
       },
       {
         tipo: "p",
         texto:
-          "O ganho maior foi de capacidade, não de tempo. A análise deixou de depender de quem a fazia e passou a ser executável por qualquer pessoa do time, com método único e resultado auditável. Do lado do cliente, a proposta passou a chegar com cenário, perfil e economia projetada já sobre a mesa. Em momentos de preço alto, quando a migração fica no limite da viabilidade, é o modelo de ponto de equilíbrio que sustenta a conversa e mantém o negócio de pé.",
+          "Isso devolveu cerca de 24 dias-pessoa por mês à operação, sem redução do escopo entregue.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A planilha central passou de quase 100 MB para cerca de 2 MB. A atualização das bases caiu de aproximadamente 20 minutos para 20 segundos.",
+      },
+      {
+        tipo: "p",
+        texto: "No atendimento recorrente, cada analista passou de aproximadamente 45 para 100 clientes.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A nova estrutura também suporta hoje cerca de 40 análises de contratação por semana. No menor tempo do processo anterior, esse volume exigiria pelo menos 30 horas semanais de um analista sênior.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A mudança principal, porém, foi organizacional: processos antes baseados em memória passaram a ter responsável, critério, documentação e rastro.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A operação permaneceu funcionando durante a mudança de diretoria, e a infraestrutura criada se tornou a base para os demais trabalhos apresentados neste portfólio.",
       },
     ],
     comoMedi: [
       {
         tipo: "p",
-        texto:
-          "Tempos de execução cronometrados na ferramenta anterior e na atual. Não há série histórica de volume de análises anterior à mudança, e por isso não reivindico ganho de volume.",
-      },
-    ],
-    stack: ["Google Sheets", "Apps Script", "Python"],
-    imagem: {
-      arquivo: "case-01-farol.png",
-      proporcao: "16 / 10",
-      legenda: "Saída da ferramenta, com perfil recomendado e faixas de cenário.",
-    },
-  },
-  {
-    id: "crise-de-contraparte",
-    numero: "02",
-    titulo: "Crise de contraparte",
-    tituloCompleto: "Crise de contraparte e conversão em ativo comercial",
-    card: {
-      problema:
-        "Dois fornecedores em situação crítica, 29 clientes expostos, 10% da carteira.",
-      solucao:
-        "Construí o modelo de impacto individualizado, o roteiro de abordagem e treinei o time.",
-      resultado:
-        "28 dos 29 clientes retidos. O modelo virou entrega comercial e abriu uma conta que a empresa tentava havia mais de um ano e meio.",
-    },
-    contexto: [
-      {
-        tipo: "p",
-        texto:
-          "Dois fornecedores de energia em situação crítica em janelas distintas, um deles em recuperação judicial em 2026. Exposição direta da empresa em 29 clientes. Só no evento maior, 24 clientes, 30 unidades consumidoras, cerca de 5 MWm e aproximadamente 10% da carteira total.",
-      },
-    ],
-    problema: [
-      {
-        tipo: "p",
-        texto:
-          "O risco imediato não era o prejuízo do evento, era a leitura que o cliente faria dele. Quando a contraparte quebra, o cliente questiona a competência de quem o colocou naquela contraparte. Sem resposta rápida, técnica e individualizada, o cenário provável era churn em cascata entre os afetados e contaminação do restante da carteira.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "O complicador era operacional. O impacto financeiro variava por cliente e por submercado, e ninguém conseguia dizer a um cliente específico quanto ele perderia sem antes fazer a conta, cliente a cliente.",
-      },
-    ],
-    oQueFiz: [
-      {
-        tipo: "p",
-        texto:
-          "Construí o modelo de cálculo de impacto financeiro individualizado, por cliente e por submercado, e a partir dele o roteiro de abordagem, os textos e o material de apresentação. Treinei o time e atuei diretamente nos atendimentos.",
+        texto: "O ganho mensal foi calculado a partir do esforço direto no processo de relatórios:",
       },
       {
         tipo: "lista",
-        ancora: "A resposta se apoiava em três frentes:",
+        ancora: "Comparação do esforço direto:",
         itens: [
-          "Relatório de impacto financeiro individual, com o número exato daquele cliente em vez de comunicação genérica.",
-          "Roteiro de abordagem por perfil de exposição, para que o time falasse com consistência técnica e sem improviso.",
-          "Material de boas práticas de seleção de contraparte, derivado do próprio evento.",
+          "Antes: 5 pessoas × 5 dias = 25 dias-pessoa.",
+          "Depois: 2 pessoas × 3 horas = 6 horas, ou 0,75 dia de trabalho.",
+          "Diferença: aproximadamente 24,25 dias-pessoa por mês.",
         ],
       },
       {
         tipo: "p",
         texto:
-          "Contida a crise, percebi que o motor de cálculo servia para algo maior que a nossa carteira. A partir da lista de credores do processo de recuperação judicial, levantei o universo de empresas afetadas: cerca de 1.200 no total, das quais aproximadamente 750 eram consumidores finais depois de excluídos os agentes do setor elétrico. Todas com a mesma dúvida que os nossos clientes tinham acabado de ter. Construí um modelo de análise em tempo real, renderizado em HTML, que mostra a qualquer consumidor a sua posição atual, os riscos aos quais está exposto e as ações disponíveis, com o tratamento técnico e os disclaimers do mercado livre.",
-      },
-    ],
-    resultado: [
-      {
-        tipo: "p",
-        texto:
-          "Dos 29 clientes expostos nos dois eventos, 28 permaneceram na base. Um churn no evento maior, nenhum no outro. O modelo passou a ser usado também pela diretoria nas próprias reuniões com clientes, o que na prática o tornou o padrão da empresa para o evento.",
+          "Tamanho dos arquivos, tempo de atualização e número de clientes por analista foram medidos diretamente antes e depois da reconstrução.",
       },
       {
         tipo: "p",
         texto:
-          "O modelo de análise em tempo real não foi escalado para a base de 750 empresas identificadas. Foi usado em dois clientes, ambos com porta aberta por sócios da empresa, e converteu nos dois. O primeiro, um grupo de hotéis e resorts, fechou contrato. O segundo, a maior consumidora de energia do estado do Paraná, era uma conta que a empresa tentava abrir havia mais de um ano e meio sem sucesso. Um mês depois da apresentação, a companhia retornou com uma demanda de estudo técnico para decisão de contratação no mercado livre, um escopo que a empresa não oferecia até então.",
-      },
-      {
-        tipo: "p",
-        texto: "A porta era da empresa. O que fez a conta se mover foi a análise.",
-      },
-    ],
-    comoMedi: [
-      {
-        tipo: "p",
-        texto:
-          "Contagem direta na base de clientes. Exposição em unidades consumidoras e MWm levantada dos contratos vigentes. Universo de empresas afetadas levantado a partir da lista de credores do processo judicial, com exclusão dos agentes do setor elétrico.",
-      },
-    ],
-    stack: ["Python", "HTML", "dados CCEE"],
-    imagem: {
-      arquivo: "case-02-html.png",
-      proporcao: "16 / 10",
-      legenda: "Modelo de análise em tempo real, renderizado em HTML.",
-    },
-  },
-  {
-    id: "produto-por-condicao",
-    numero: "03",
-    titulo: "Produto por condição de mercado",
-    tituloCompleto: "Desenho de produto a partir de leitura de mercado",
-    card: {
-      problema:
-        "Preço favorável e preço alto travam a venda por motivos opostos.",
-      solucao: "Criei um produto para cada momento, com dois anos de distância.",
-      resultado:
-        "55 a 60 contratos somando os dois produtos. Ambos seguem em operação.",
-    },
-    contexto: [
-      {
-        tipo: "p",
-        texto:
-          "Dois momentos opostos do mercado livre, com dois anos de distância. Em 2024, preço favorável, com margem para desenhar oferta em segmentos antes inviáveis. Em 2026, preço alto, com a migração deixando de fechar a conta para parte relevante da base.",
-      },
-    ],
-    problema: [
-      {
-        tipo: "p",
-        texto:
-          "Nos dois momentos, o modelo padrão de atendimento deixava dinheiro parado, por motivos diferentes.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "Com preço favorável, o CRM acumulava clientes de baixo consumo que nunca eram chamados, porque o custo de gestão não cabia no ticket. Com preço alto, o cliente que não podia migrar entrava em compasso de espera, sem receita para a empresa e exposto à concorrência durante todo o período.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "A resposta padrão do mercado era a mesma nos dois casos: não atender, ou esperar.",
-      },
-    ],
-    oQueFiz: [
-      {
-        tipo: "p",
-        texto:
-          "Criei dois produtos, cada um desenhado para a condição de mercado do seu momento.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "O primeiro, em 2024, é um modelo de compra de energia com fee comercial embutido no preço, com escopo de gestão reduzido e supervisão dimensionada para caber no ticket do cliente pequeno. Com o preço favorável, a economia projetada absorvia o fee e ainda entregava ganho ao cliente. O cliente que a operação não conseguia atender passou a ser atendido com um serviço menor e rentável.",
-      },
-      {
-        tipo: "lista",
-        ancora:
-          "O segundo, em 2026, atende o cliente que não pode migrar, com desconto, sem esperar a janela de preço. Ele nasceu do cruzamento de três leituras:",
-        itens: [
-          "Leitura de preço, que mostrou que a migração deixaria de fechar a conta por um período longo o bastante para custar clientes.",
-          "Leitura regulatória e de oferta em baixa tensão, que abriu o caminho pelo qual o atendimento era viável antes da migração.",
-          "Leitura de portfólio, que identificou energia excedente em cooperativas e associações e lhe deu destino.",
-        ],
-      },
-      {
-        tipo: "p",
-        texto:
-          "Parametrizei os dois modelos, testei em campo e conduzi a operação com o meu time. A execução na ponta comercial foi feita em conjunto com a estrutura comercial da empresa.",
-      },
-    ],
-    resultado: [
-      {
-        tipo: "p",
-        texto:
-          "No produto de baixo consumo, 10 contratos com clientes que antes não eram sequer abordados. No produto para o cliente que não pode migrar, cerca de 20 contratos fechados pela minha equipe com clientes da base em migração e outros 25 a 30 na ponta comercial. Ambos seguem em operação.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "O efeito organizacional foi maior que o número de contratos. O comercial, que estava sem oferta viável para o momento de mercado, voltou a vender, e a estrutura comercial foi reorganizada em torno da nova frente, com a unificação das equipes e a criação de uma posição executiva de grandes negócios. O produto de 2026 foi lançado praticamente em paralelo com o primeiro movimento equivalente do mercado, no mesmo mês.",
-      },
-    ],
-    comoMedi: [
-      {
-        tipo: "p",
-        texto:
-          "Contagem de contratos na base. A receita gerada é estimativa própria a partir da margem por contrato e não é apresentada como número auditado.",
-      },
-    ],
-    imagem: {
-      arquivo: "case-03-matriz.svg",
-      proporcao: "16 / 9",
-      legenda: "Um produto para cada condição de mercado.",
-    },
-  },
-  {
-    id: "posicionamento-competitivo",
-    numero: "04",
-    titulo: "Posicionamento competitivo",
-    tituloCompleto: "Posicionamento competitivo e habilitação do time comercial",
-    card: {
-      problema:
-        "O time perdia negócios para o desconto garantido e chamava isso de medo do cliente.",
-      solucao:
-        "Fui ao contrato do concorrente e construí o roteiro de contraposição.",
-      resultado:
-        "Seis clientes perdidos em 45 dias antes. Nenhum em quase três anos depois.",
-    },
-    contexto: [
-      {
-        tipo: "p",
-        texto:
-          "Início da minha trajetória na empresa, como analista, no período em que eu estruturava a operação e os padrões de atendimento ao cliente varejista. O varejista era um produto novo e a operação estava sendo criada do zero.",
-      },
-    ],
-    problema: [
-      {
-        tipo: "p",
-        texto:
-          "Comercializadoras concorrentes ofereciam contratos de desconto garantido, uma proposta de leitura fácil e comercialmente agressiva. O time de vendas perdia negócios para ela e não tinha resposta técnica.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "A justificativa recorrente era o medo do cliente: medo da variação, medo do risco, medo de errar. Só que medo não é objeção, é sintoma. A objeção real estava nas cláusulas do contrato de desconto garantido, e ninguém no time tinha ido lê-las. Nos 45 dias entre o lançamento da oferta concorrente e a minha intervenção, seis clientes foram perdidos para ela.",
-      },
-    ],
-    oQueFiz: [
-      {
-        tipo: "p",
-        texto:
-          "Fui aos contratos da concorrência e levantei ponto a ponto onde o desconto garantido cobra o preço da própria garantia. Transformei isso em um roteiro de contraposição técnica, não em ataque ao concorrente.",
-      },
-      {
-        tipo: "lista",
-        ancora: "O roteiro foi construído sobre três princípios:",
-        itens: [
-          "Foco no contrato e não no discurso, para tirar a conversa da promessa comercial e levá-la para a cláusula.",
-          "Tradução do risco em termos que o cliente entende, para que o medo virasse critério de decisão e não paralisia.",
-          "Ponderação técnica em vez de confronto, no formato de consultoria, para preservar a percepção de imparcialidade.",
-        ],
-      },
-      {
-        tipo: "p",
-        texto:
-          "Treinei o time comercial na aplicação do roteiro, área que não estava sob a minha gestão.",
-      },
-    ],
-    resultado: [
-      {
-        tipo: "p",
-        texto:
-          "Seis clientes perdidos em 45 dias, antes da intervenção. Nenhum desde então. O roteiro segue em uso e a empresa não perdeu mais nenhuma venda para esse argumento em quase três anos.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "O ganho não foi só de conversão. O time deixou de tratar o medo do cliente como obstáculo intransponível e passou a tratá-lo como um ponto de conversa que ele mesmo podia conduzir, com argumento técnico e sem escalar para a diretoria.",
-      },
-    ],
-    comoMedi: [
-      {
-        tipo: "p",
-        texto:
-          "Contagem de negócios perdidos para essa oferta específica, antes e depois do treinamento.",
-      },
-    ],
-    imagem: {
-      arquivo: "case-04-promessa-clausula.svg",
-      proporcao: "16 / 9",
-      legenda: "A promessa comercial ao lado da cláusula que a cobra.",
-    },
-  },
-  {
-    id: "continuidade-operacional",
-    numero: "05",
-    titulo: "Continuidade operacional",
-    tituloCompleto: "Continuidade operacional e desconcentração de conhecimento",
-    card: {
-      problema:
-        "A operação dependia da memória de duas pessoas e a empresa acabara de trocar a diretoria.",
-      solucao:
-        "Automatizei as rotinas críticas, reconstruí a camada de dados e documentei o que só existia oralmente.",
-      resultado:
-        "Cada analista passou de 45 para 100 clientes atendidos. Cerca de 24 dias-homem devolvidos à operação todo mês.",
-    },
-    contexto: [
-      {
-        tipo: "p",
-        texto:
-          "Em 2025 a empresa trocou a diretoria de duas áreas. A operação do mercado livre é densa em regra, prazo e obrigação regulatória, e boa parte desse conhecimento não estava documentada em lugar nenhum. Estava na cabeça de duas pessoas.",
-      },
-    ],
-    problema: [
-      {
-        tipo: "p",
-        texto:
-          "Uma operação que depende de duas pessoas não é uma operação, é um risco. Rotinas críticas rodavam por memória, envio manual e planilha individual. Não havia como treinar alguém novo, auditar o que tinha sido feito ou absorver crescimento sem contratar mais gente sênior.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "Havia também um limite físico. As planilhas centrais da operação passavam de 90 MB, com muitos usuários simultâneos, e travavam. A rotina de atualização das bases levava cerca de 20 minutos e falhava com frequência.",
-      },
-    ],
-    oQueFiz: [
-      {
-        tipo: "p",
-        texto:
-          "Tratei o problema como de continuidade, não de produtividade. O objetivo não era ganhar tempo, era tirar a operação da cabeça das pessoas e colocá-la em sistema.",
-      },
-      {
-        tipo: "lista",
-        ancora: "O trabalho se dividiu em quatro frentes:",
-        itens: [
-          "Automação das rotinas mensais críticas, com sete atividades manuais recorrentes convertidas em ferramentas internas.",
-          "Reconstrução da camada de dados, com o processamento pesado saindo da planilha e indo para Python e nuvem.",
-          "Conversão de planilhas em mini sistemas, com regra de negócio explícita, validação e rastreabilidade.",
-          "Base de conhecimento interna, com wiki, POPs e fluxogramas do que antes era transmitido oralmente.",
-        ],
-      },
-      {
-        tipo: "p",
-        texto:
-          "Conduzi as frentes junto com um analista sênior do time, que foi peça central na execução.",
-      },
-    ],
-    resultado: [
-      {
-        tipo: "p",
-        texto:
-          "O ciclo mensal de relatórios, que ocupava cinco pessoas por cinco dias, passou a ser feito por duas pessoas em cerca de três horas. São aproximadamente 24 dias-homem devolvidos à operação todo mês, sem mudança no que é entregue.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "A planilha central saiu de quase 100 MB para cerca de 2 MB, e a rotina de atualização de bases caiu de aproximadamente 20 minutos para cerca de 20 segundos.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "O ganho maior não é o tempo devolvido, é o que passou a ser possível. A operação roda hoje cerca de 40 análises de contratação por semana. No modelo anterior, ao tempo do analista sênior, esse volume exigiria mais de 30 horas semanais dedicadas exclusivamente a isso, o equivalente a uma pessoa em tempo integral. Não era um volume caro. Era um volume que não existia. Pelo mesmo motivo, cada analista passou a atender 100 clientes onde antes atendia 45.",
-      },
-      {
-        tipo: "p",
-        texto:
-          "Rotinas que dependiam de memória passaram a depender de processo, com dono, critério e rastro. O conhecimento técnico e regulatório deixou de ser transmitido de boca em boca e passou a ser consultável, atualizável e reaproveitável. A operação continuou funcionando durante a troca de diretoria, e a camada construída naquele ano é a base sobre a qual todos os outros trabalhos deste portfólio rodam hoje.",
-      },
-    ],
-    comoMedi: [
-      {
-        tipo: "p",
-        texto:
-          "Ciclo de relatórios cronometrado antes e depois, com headcount conhecido nos dois momentos. Tamanho de arquivo e tempo de rotina medidos antes e depois. A estimativa de capacidade usa o tempo do analista sênior, 45 minutos por análise, que é o piso: com analista júnior o tempo passava de 1h40. Não há série histórica de volume anterior à ferramenta, e por isso não reivindico o ganho como economia de horas, e sim como capacidade que antes não existia.",
+          "As 40 análises semanais representam capacidade atual viabilizada pela nova estrutura. Como não existe uma série histórica comparável do volume anterior, esse número não é apresentado como economia comprovada de horas.",
       },
     ],
     stack: ["Google Sheets", "Apps Script", "Python", "Google Cloud", "ClickUp", "NotebookLM"],
     imagem: {
-      arquivo: "case-05-sistema.png",
+      arquivo: "case-01-sistema.png",
       proporcao: "16 / 10",
-      legenda: "Painel da planilha-sistema e base de conhecimento interna.",
+      legenda: "Sistema operacional interno e base de conhecimento da área.",
+    },
+  },
+  {
+    id: "produtos-ciclos-opostos",
+    numero: "02",
+    titulo: "Produtos para ciclos opostos de mercado",
+    tituloCompleto: "Produtos para ciclos opostos de mercado",
+    card: {
+      problema:
+        "Em momentos diferentes, a oferta padrão deixou de atender dois grupos: clientes pequenos demais para a operação e clientes que ainda não podiam migrar.",
+      solucao:
+        "Desenhei um produto para cada condição, ajustando modelo econômico, escopo de atendimento e operação comercial.",
+      resultado: "As duas ofertas somaram de 55 a 60 contratos e continuam em operação.",
+    },
+    contexto: [
+      {
+        tipo: "p",
+        texto: "Em um intervalo de dois anos, o mercado apresentou condições opostas.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Em 2024, preços favoráveis abriram espaço para atender segmentos antes considerados pequenos demais.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Em 2026, a alta dos preços tornou a migração para o mercado livre pouco atrativa para parte dos clientes.",
+      },
+    ],
+    problema: [
+      {
+        tipo: "p",
+        texto: "Nos dois cenários, a oferta padrão da empresa deixava oportunidades sem atendimento.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Com preços favoráveis, o CRM acumulava empresas de baixo consumo que não eram abordadas porque o custo da operação não cabia no valor do contrato.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Com preços altos, clientes interessados na migração precisavam esperar. Durante esse período, não geravam receita, continuavam expostos ao custo atual e permaneciam acessíveis aos concorrentes.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "As causas eram opostas, mas o resultado era o mesmo: havia demanda, porém não existia uma oferta economicamente viável.",
+      },
+    ],
+    oQueFiz: [
+      {
+        tipo: "p",
+        texto:
+          "Usei a condição de mercado como variável de desenho de produto e criei uma solução para cada momento.",
+      },
+      {
+        tipo: "sub",
+        texto: "Para clientes de baixo consumo",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Desenhei um modelo de compra com remuneração comercial incorporada ao preço e escopo de gestão reduzido.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A economia disponível naquele momento permitia absorver essa remuneração e ainda preservar benefício para o cliente. Ao mesmo tempo, o esforço operacional foi dimensionado para que o serviço coubesse em um ticket menor.",
+      },
+      {
+        tipo: "p",
+        texto: "Um segmento antes ignorado passou a ter uma oferta sustentável para os dois lados.",
+      },
+      {
+        tipo: "sub",
+        texto: "Para clientes que ainda não podiam migrar",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Em 2026, desenhei uma oferta de transição para entregar benefício antes da migração definitiva.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O produto nasceu do cruzamento de três leituras: perspectiva de preços, possibilidade regulatória e disponibilidade de oferta.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A solução conectou clientes que precisavam de uma alternativa imediata à energia excedente de cooperativas e associações.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Parametrizei os dois modelos, testei sua aplicação e conduzi a operação com o meu time. A execução comercial foi realizada em conjunto com a área de vendas.",
+      },
+    ],
+    resultado: [
+      {
+        tipo: "p",
+        texto: "O primeiro produto gerou 10 contratos com empresas que antes não eram sequer abordadas.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "No produto de transição, minha equipe fechou aproximadamente 20 contratos com clientes que já estavam na base de migração. A estrutura comercial fechou outros 25 a 30.",
+      },
+      {
+        tipo: "p",
+        texto: "Somadas, as duas ofertas geraram de 55 a 60 contratos e continuam em operação.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "No segundo momento, o impacto foi além das vendas. O comercial voltou a ter uma oferta aplicável ao cenário de mercado, e a empresa reorganizou sua estrutura em torno da nova frente, unificando equipes e criando uma posição executiva de grandes negócios.",
+      },
+    ],
+    comoMedi: [
+      {
+        tipo: "p",
+        texto: "Os contratos foram contabilizados na base operacional e nos registros da frente comercial.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O resultado aparece como intervalo porque parte da produção comercial foi consolidada como uma faixa de 25 a 30 contratos.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Os 10 contratos do primeiro produto e os aproximadamente 20 conduzidos pela minha equipe foram contados diretamente na base.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Não apresento uma estimativa de receita porque o cálculo interno utilizava margem média por contrato e não constitui um número financeiro auditado.",
+      },
+    ],
+    imagem: {
+      arquivo: "case-02-matriz.svg",
+      proporcao: "16 / 9",
+      legenda: "Matriz mostrando um produto para cada condição de mercado.",
+    },
+  },
+  {
+    id: "retencao-crise-fornecedor",
+    numero: "03",
+    titulo: "Retenção e crescimento durante uma crise de fornecedor",
+    tituloCompleto: "Retenção e crescimento durante uma crise de fornecedor",
+    card: {
+      problema:
+        "Dois fornecedores entraram em situação crítica e expuseram 29 clientes. Apenas o maior evento atingiu aproximadamente 10% da carteira.",
+      solucao:
+        "Construí o modelo de impacto individual, organizei a resposta aos clientes e transformei o mesmo raciocínio em um ativo comercial.",
+      resultado:
+        "28 dos 29 clientes permaneceram na base. A análise também contribuiu para um novo contrato e para a reativação de uma conta estratégica.",
+    },
+    contexto: [
+      {
+        tipo: "p",
+        texto:
+          "Em dois momentos distintos, fornecedores com os quais clientes da empresa mantinham contratos entraram em situação crítica. Um deles iniciou um processo de recuperação judicial em 2026.",
+      },
+      {
+        tipo: "p",
+        texto: "Ao todo, 29 clientes ficaram diretamente expostos.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Apenas no maior evento, foram 24 clientes, 30 unidades consumidoras e aproximadamente 5 MW médios contratados — cerca de 10% da carteira.",
+      },
+    ],
+    problema: [
+      {
+        tipo: "p",
+        texto: "O risco não era apenas financeiro.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Quando um fornecedor deixa de cumprir suas obrigações, o cliente também passa a questionar quem recomendou ou intermediou aquela contratação.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Uma resposta genérica não era suficiente porque o impacto variava conforme contrato, perfil do cliente e região do sistema elétrico.",
+      },
+      {
+        tipo: "p",
+        texto: "Cada cliente queria uma resposta objetiva:",
+      },
+      {
+        tipo: "p",
+        texto: "Quanto isso representa para a minha empresa e o que devo fazer agora?",
+      },
+    ],
+    oQueFiz: [
+      {
+        tipo: "p",
+        texto: "Organizei a resposta em dois movimentos.",
+      },
+      {
+        tipo: "sub",
+        texto: "Conter a crise",
+      },
+      {
+        tipo: "p",
+        texto: "Construí um modelo de impacto financeiro por cliente e por região.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A partir dele, desenvolvi relatórios individuais de exposição, roteiros de abordagem por perfil de risco e materiais para apoiar futuras decisões de contratação.",
+      },
+      {
+        tipo: "p",
+        texto: "Também treinei a equipe e participei diretamente dos atendimentos mais críticos.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A conversa deixou de partir de uma explicação genérica sobre o evento e passou a começar pelo número de cada cliente.",
+      },
+      {
+        tipo: "sub",
+        texto: "Transformar o aprendizado em ativo comercial",
+      },
+      {
+        tipo: "p",
+        texto: "Depois da contenção, percebi que o mesmo problema atingia empresas fora da nossa carteira.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A partir da lista de credores do processo judicial, levantamos aproximadamente 1.200 empresas afetadas. Após excluir fornecedores e outros agentes do setor, restaram cerca de 750 consumidores finais.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Transformei o modelo interno em uma análise apresentada em HTML, mostrando exposição, riscos e alternativas disponíveis.",
+      },
+    ],
+    resultado: [
+      {
+        tipo: "p",
+        texto: "Dos 29 clientes expostos, 28 permaneceram na base.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Houve uma saída no maior evento e nenhuma no segundo. O modelo também passou a ser utilizado pela diretoria em reuniões com clientes e se tornou o padrão interno de resposta à crise.",
+      },
+      {
+        tipo: "p",
+        texto: "A versão comercial foi utilizada em duas contas às quais os sócios já tinham acesso.",
+      },
+      {
+        tipo: "p",
+        texto: "Em uma delas, um grupo de hotéis e resorts fechou contrato.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Na outra, uma grande consumidora de energia do Paraná, com a qual a empresa tentava avançar havia mais de um ano e meio, retomou a conversa. Um mês depois da apresentação, solicitou um estudo técnico para apoiar sua decisão de contratação.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A abertura das duas portas veio dos sócios. A análise foi o ativo técnico utilizado para transformar esse acesso em uma conversa concreta de negócio.",
+      },
+    ],
+    comoMedi: [
+      {
+        tipo: "p",
+        texto: "A retenção foi medida diretamente na base de clientes após os dois eventos.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O número de unidades e o volume de energia foram levantados nos contratos vigentes. O universo externo foi calculado a partir da lista de credores, excluindo fornecedores e demais agentes do setor elétrico.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Os resultados comerciais são apresentados separadamente: um contrato fechado e uma conta que avançou para a solicitação de um estudo técnico. Não são tratados como duas vendas concluídas.",
+      },
+    ],
+    stack: ["Python", "HTML", "dados CCEE"],
+    imagem: {
+      arquivo: "case-03-html.png",
+      proporcao: "16 / 10",
+      legenda: "Análise individual com exposição, riscos e alternativas disponíveis.",
+    },
+  },
+  {
+    id: "decisao-em-segundos",
+    numero: "04",
+    titulo: "Decisão crítica em segundos",
+    tituloCompleto: "Decisão crítica em segundos",
+    card: {
+      problema:
+        "Uma decisão de contratação dependia de planilhas individuais e da experiência de poucos especialistas.",
+      solucao:
+        "Modelei o ponto de equilíbrio e liderei a construção de uma ferramenta única, com cenários e recomendação automática.",
+      resultado:
+        "Uma análise que levava de 45 minutos a 2 horas passou a ser concluída em poucos segundos, com método único e resultado auditável.",
+    },
+    contexto: [
+      {
+        tipo: "p",
+        texto:
+          "Para recomendar a migração de um cliente ao mercado livre, a equipe precisava comparar a conta atual com diferentes cenários de preço, consumo e contratação.",
+      },
+      {
+        tipo: "p",
+        texto: "A decisão também envolvia perfil de energia, demanda contratada, modalidade tarifária e risco de crédito.",
+      },
+    ],
+    problema: [
+      {
+        tipo: "p",
+        texto: "Cada gestor utilizava a própria planilha.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Os dados eram inseridos manualmente, o método variava entre pessoas e parte relevante da recomendação dependia da experiência de poucos profissionais.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Uma análise levava cerca de 45 minutos para um analista sênior e de 1h40 a 2 horas para um analista júnior, que ainda precisava de apoio.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O problema não era apenas velocidade. Uma decisão importante para o cliente estava concentrada em duas ou três pessoas e não havia um método único que mostrasse claramente como a recomendação havia sido formada.",
+      },
+    ],
+    oQueFiz: [
+      {
+        tipo: "p",
+        texto:
+          "Modelei o ponto de equilíbrio da migração e liderei, com dois analistas do meu time, a construção de uma ferramenta única.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Ela passou a consolidar as 12 últimas faturas do cliente, calcular o limite econômico da migração e recomendar o perfil de energia.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Também incorporamos cenários otimista, neutro e pessimista, além da análise de demanda, modalidade tarifária e uma triagem antecipada de crédito.",
+      },
+      {
+        tipo: "p",
+        texto: "A ferramenta não substitui a decisão comercial. Ela organiza os fatos que precisam sustentá-la.",
+      },
+    ],
+    resultado: [
+      {
+        tipo: "p",
+        texto: "A análise passou de um intervalo de 45 minutos a 2 horas para poucos segundos.",
+      },
+      {
+        tipo: "p",
+        texto: "Mais importante: a decisão deixou de depender de quem fazia a conta.",
+      },
+      {
+        tipo: "p",
+        texto: "Qualquer analista passou a executar o processo com o mesmo método, cenários comparáveis e resultado auditável.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Para o cliente, a proposta passou a mostrar com mais clareza quanto poderia economizar, em quais condições e sob quais riscos.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Em períodos de preços altos, o modelo também permite mostrar quando a migração ainda faz sentido e quando é melhor não avançar, sem depender apenas de julgamento intuitivo.",
+      },
+    ],
+    comoMedi: [
+      {
+        tipo: "p",
+        texto: "Os tempos foram cronometrados antes e depois da ferramenta, considerando perfis sênior e júnior.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Como não existe uma série histórica comparável do volume de análises anterior à mudança, o caso demonstra redução de tempo e distribuição da capacidade, mas não reivindica aumento histórico de produção ou receita.",
+      },
+    ],
+    stack: ["Google Sheets", "Apps Script", "Python"],
+    imagem: {
+      arquivo: "case-04-farol.png",
+      proporcao: "16 / 10",
+      legenda: "Saída da ferramenta com limite de viabilidade, perfil recomendado e faixas de cenário.",
+    },
+  },
+  {
+    id: "resposta-competitiva",
+    numero: "05",
+    titulo: "Resposta competitiva para o time comercial",
+    tituloCompleto: "Resposta competitiva para o time comercial",
+    card: {
+      problema:
+        "O time perdeu seis negócios em 45 dias para uma oferta de desconto garantido e não tinha uma resposta técnica para ela.",
+      solucao:
+        "Analisei os contratos concorrentes, transformei as cláusulas em um roteiro consultivo e treinei a equipe comercial.",
+      resultado: "Nos quase três anos seguintes, nenhuma nova perda foi registrada pelo mesmo motivo.",
+    },
+    contexto: [
+      {
+        tipo: "p",
+        texto:
+          "O caso aconteceu no início da minha trajetória na empresa, quando a operação do mercado varejista ainda estava sendo estruturada.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A empresa construía seus primeiros processos, padrões de atendimento e formas de posicionar o serviço diante dos clientes.",
+      },
+    ],
+    problema: [
+      {
+        tipo: "p",
+        texto: "Concorrentes passaram a oferecer contratos com desconto garantido.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A proposta era simples de comunicar: o cliente recebia uma promessa clara de economia e transferia parte da incerteza para o fornecedor.",
+      },
+      {
+        tipo: "p",
+        texto: "O time comercial não possuía uma resposta técnica para essa oferta.",
+      },
+      {
+        tipo: "p",
+        texto: "Nos 45 dias seguintes ao lançamento da proposta concorrente, seis negócios foram perdidos pelo mesmo argumento.",
+      },
+      {
+        tipo: "p",
+        texto: "A explicação recorrente era que o cliente tinha medo da variação ou de tomar a decisão errada.",
+      },
+      {
+        tipo: "p",
+        texto: "Mas o medo era o sintoma.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A objeção real estava na comparação entre uma promessa aparentemente segura e uma alternativa percebida como mais complexa.",
+      },
+    ],
+    oQueFiz: [
+      {
+        tipo: "p",
+        texto: "Tratei o problema como uma questão de posicionamento, não de desconto.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Analisei os contratos utilizados pelos concorrentes e identifiquei as condições, limites e obrigações associados à garantia.",
+      },
+      {
+        tipo: "p",
+        texto: "Depois, transformei essa leitura em um roteiro de contraposição consultiva para o time comercial.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "A abordagem levava a conversa da promessa comercial para o contrato efetivo, traduzia riscos técnicos em consequências econômicas e ajudava o vendedor a conduzir a comparação sem atacar o concorrente ou afirmar que uma única alternativa servia para todos.",
+      },
+      {
+        tipo: "p",
+        texto: "Treinei a equipe comercial na aplicação do roteiro, embora a área não estivesse sob a minha gestão.",
+      },
+    ],
+    resultado: [
+      {
+        tipo: "p",
+        texto: "Nos quase três anos seguintes ao treinamento, nenhuma nova perda foi registrada com o mesmo motivo.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O roteiro continuou em uso e o time passou a conduzir sozinho uma conversa que antes precisava ser escalada para a diretoria ou encerrada sem contraposição.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "O principal ganho foi transformar uma objeção percebida como emocional em uma decisão que o comercial conseguia estruturar com critérios.",
+      },
+    ],
+    comoMedi: [
+      {
+        tipo: "p",
+        texto:
+          "O resultado foi medido pela comparação entre os negócios registrados como perdidos para essa oferta antes e depois do treinamento.",
+      },
+      {
+        tipo: "p",
+        texto: "Não houve grupo de controle ou experimento isolado.",
+      },
+      {
+        tipo: "p",
+        texto:
+          "Por isso, o dado demonstra a mudança observada nos registros comerciais após a intervenção, mas não atribui todo o resultado exclusivamente ao roteiro.",
+      },
+    ],
+    imagem: {
+      arquivo: "case-05-promessa-clausula.svg",
+      proporcao: "16 / 9",
+      legenda: "Comparação entre a promessa comercial e as condições contratuais associadas a ela.",
     },
   },
 ];
-

@@ -12,12 +12,25 @@ import { ImagemCaso } from "./ImagemCaso";
 function Blocos({ blocos }: { blocos: Bloco[] }) {
   return (
     <div className="flex flex-col gap-3">
-      {blocos.map((b) =>
-        b.tipo === "p" ? (
-          <p key={b.texto.slice(0, 40)} className="text-[15px] md:text-base leading-relaxed text-[var(--text)]">
-            {b.texto}
-          </p>
-        ) : (
+      {blocos.map((b) => {
+        if (b.tipo === "sub") {
+          return (
+            <p
+              key={b.texto.slice(0, 40)}
+              className="mt-1 text-[15px] md:text-base font-semibold text-[var(--text)]"
+            >
+              {b.texto}
+            </p>
+          );
+        }
+        if (b.tipo === "p") {
+          return (
+            <p key={b.texto.slice(0, 40)} className="text-[15px] md:text-base leading-relaxed text-[var(--text)]">
+              {b.texto}
+            </p>
+          );
+        }
+        return (
           <div key={b.ancora.slice(0, 40)}>
             <p className="text-[15px] md:text-base leading-relaxed text-[var(--text)]">{b.ancora}</p>
             <ul className="mt-2.5 flex flex-col gap-2.5">
@@ -32,8 +45,8 @@ function Blocos({ blocos }: { blocos: Bloco[] }) {
               ))}
             </ul>
           </div>
-        )
-      )}
+        );
+      })}
     </div>
   );
 }
@@ -62,12 +75,12 @@ function PainelCaso({ c }: { c: CasePortfolio }) {
       <p className="mt-4 text-[15px] md:text-base leading-relaxed text-[var(--muted)]">{c.card.problema}</p>
       <p className="mt-2 text-[15px] md:text-base leading-relaxed text-[var(--text)]">{c.card.solucao}</p>
 
-      <p
-        className="mt-6 border-l-[3px] pl-4 text-lg md:text-[22px] font-semibold leading-snug text-[var(--primary-deep)]"
-        style={{ borderColor: "var(--accent)" }}
-      >
-        {c.card.resultado}
-      </p>
+      <div className="mt-6 rounded-2xl bg-[var(--accent-soft)] px-5 py-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">Resultado</p>
+        <p className="mt-2 text-base md:text-lg leading-snug text-[var(--text)]">
+          {c.card.resultado}
+        </p>
+      </div>
 
       <button
         type="button"
@@ -144,11 +157,10 @@ export function Cases() {
         >
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">04 — Casos</p>
           <h2 className="mt-3 text-3xl md:text-[46px] leading-tight font-medium tracking-heading">
-            Cinco trabalhos, resultado <span className="font-titulo italic font-normal">medido</span>
+            Cinco problemas de negócio. <span className="font-titulo italic font-normal">Resultados medidos.</span>
           </h2>
           <p className="mt-4 max-w-[620px] text-base md:text-lg leading-relaxed text-[var(--muted)]">
-            Cada caso abre em dois níveis: o resumo de quarenta segundos e o caso completo, com o
-            bloco de como cada número foi medido.
+            Do problema ao resultado: o que encontrei, o que construí e como medi a mudança.
           </p>
         </motion.div>
 
