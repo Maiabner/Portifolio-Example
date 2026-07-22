@@ -11,6 +11,16 @@
   <meta property="og:title" content="Abner Maia Albanez — Portfólio" />
   <meta property="og:description" content="Construo a operação e os produtos que fazem a empresa vender." />
   <meta property="og:type" content="website" />
+  <script>
+    // Aplica o tema salvo antes do paint. Base = Papel (claro); só entra em Noir se o usuário escolheu.
+    (function () {
+      try {
+        if (localStorage.getItem("tema") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>

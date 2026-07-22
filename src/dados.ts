@@ -53,7 +53,7 @@ export const VALORES = [
 ];
 
 export const HEADLINE = {
-  frase: "Construo a operação e os produtos que fazem a empresa vender.",
+  frase: "Conecto estratégia e execução. Leio o gargalo que trava o resultado e construo o que o remove.",
   apoio:
     "Em três anos, ajudei a estruturar do zero a operação de varejo da Sion Energia, desenhei produtos para ciclos opostos de mercado e ampliei de 45 para 100 a carteira atendida por analista. Hoje coordeno a operação ponta a ponta, com uma equipe de seis pessoas e reporte direto aos sócios.",
 };
@@ -111,23 +111,29 @@ export const TRAJETORIA = [
   },
 ];
 
-// Resumo no final da página (cards com ícone)
+// Resumo no final da página (lista editorial).
+// `destaque`: trechos do texto realçados em latão (o resultado). O texto
+// permanece literal; aqui só apontamos o que enfatizar.
 export const RESUMO_PONTOS = [
   {
     titulo: "Escalar a capacidade operacional",
     texto: "Cada analista passou de 45 para 100 clientes atendidos. Um ciclo mensal que ocupava cinco pessoas por cinco dias passou a ser executado por duas pessoas em cerca de três horas.",
+    destaque: ["100 clientes", "três horas"],
   },
   {
     titulo: "Transformar mercado em produto",
     texto: "Desenhei duas ofertas para ciclos opostos de preço. Somadas, geraram de 55 a 60 contratos e continuam em operação.",
+    destaque: ["55 a 60 contratos"],
   },
   {
     titulo: "Transformar julgamento em sistema",
     texto: "Uma decisão que levava de 45 minutos a duas horas passou a ser calculada em segundos, com método único, cenários comparáveis e resultado auditável.",
+    destaque: ["segundos"],
   },
   {
     titulo: "Proteger e destravar receita",
     texto: "Retivemos 28 dos 29 clientes expostos a duas crises. Em outra frente, uma análise técnica ajudou a abrir uma conta que estava parada havia mais de um ano e meio.",
+    destaque: ["28 dos 29 clientes"],
   },
 ];
 // Forma de trabalhar (grade de competências)
@@ -180,10 +186,17 @@ export type CasePortfolio = {
   resultado: Bloco[];
   comoMedi: Bloco[];
   stack?: string[];
-  imagem: {
-    arquivo: string;
+  // Realce do resultado (card e caso completo): `riscar` = valor "antes"
+  // (tachado), `destacar` = valor "depois" (serifa itálica em latão).
+  realce?: { riscar?: string[]; destacar?: string[] };
+  // Sem imagem: omitir o campo (ex.: caso 01, material interno).
+  // Dois ou mais arquivos: alternam com cross-fade no slot.
+  imagem?: {
+    arquivos: string[];
     proporcao: string; // valor CSS de aspect-ratio
     legenda?: string;
+    zoom?: string[]; // imagens do lightbox; padrão = arquivos
+    duracoes?: number[]; // ms por quadro no slot; padrão 5000
   };
 };
 
@@ -191,6 +204,7 @@ export const CASES: CasePortfolio[] = [
   {
     id: "escala-continuidade",
     numero: "01",
+    realce: { destacar: ["100 clientes atendidos", "24 dias-pessoa"] },
     titulo: "Escala e continuidade para uma operação crítica",
     tituloCompleto: "Escala e continuidade para uma operação crítica",
     card: {
@@ -324,15 +338,13 @@ export const CASES: CasePortfolio[] = [
       },
     ],
     stack: ["Google Sheets", "Apps Script", "Python", "Google Cloud", "ClickUp", "NotebookLM"],
-    imagem: {
-      arquivo: "case-01-sistema.png",
-      proporcao: "16 / 10",
-      legenda: "Sistema operacional interno e base de conhecimento da área.",
-    },
+    // Sem imagem por escolha: o caso é o sistema interno e a base de conhecimento
+    // da empresa, material que não pode ser exposto. O texto e os números sustentam.
   },
   {
     id: "produtos-ciclos-opostos",
     numero: "02",
+    realce: { destacar: ["55 a 60 contratos"] },
     titulo: "Produtos para ciclos opostos de mercado",
     tituloCompleto: "Produtos para ciclos opostos de mercado",
     card: {
@@ -470,14 +482,15 @@ export const CASES: CasePortfolio[] = [
       },
     ],
     imagem: {
-      arquivo: "case-02-matriz.svg",
-      proporcao: "16 / 9",
-      legenda: "Matriz mostrando um produto para cada condição de mercado.",
+      arquivos: ["case-02-a.png", "case-02-b.png"],
+      proporcao: "1080 / 560",
+      legenda: "Uma matriz por produto: cada oferta nasce de um canto oposto do ciclo de mercado.",
     },
   },
   {
     id: "retencao-crise-fornecedor",
     numero: "03",
+    realce: { destacar: ["28 dos 29 clientes"] },
     titulo: "Retenção e crescimento durante uma crise de fornecedor",
     tituloCompleto: "Retenção e crescimento durante uma crise de fornecedor",
     card: {
@@ -621,14 +634,16 @@ export const CASES: CasePortfolio[] = [
     ],
     stack: ["Python", "HTML", "dados CCEE"],
     imagem: {
-      arquivo: "case-03-html.png",
-      proporcao: "16 / 10",
-      legenda: "Análise individual com exposição, riscos e alternativas disponíveis.",
+      arquivos: ["case-03-fold.jpg"],
+      proporcao: "2560 / 1860",
+      legenda: "Análise individual de exposição, anonimizada. Clique para ver o dashboard completo.",
+      zoom: ["case-03-full.jpg"],
     },
   },
   {
     id: "decisao-em-segundos",
     numero: "04",
+    realce: { riscar: ["de 45 minutos a 2 horas"], destacar: ["poucos segundos"] },
     titulo: "Decisão crítica em segundos",
     tituloCompleto: "Decisão crítica em segundos",
     card: {
@@ -729,14 +744,15 @@ export const CASES: CasePortfolio[] = [
     ],
     stack: ["Google Sheets", "Apps Script", "Python"],
     imagem: {
-      arquivo: "case-04-farol.png",
-      proporcao: "16 / 10",
-      legenda: "Saída da ferramenta com limite de viabilidade, perfil recomendado e faixas de cenário.",
+      arquivos: ["case-04-farol.png"],
+      proporcao: "1080 / 660",
+      legenda: "Saída da ferramenta: farol do tipo de energia, triagem de crédito e leitura de mercado. Valores de exemplo.",
     },
   },
   {
     id: "resposta-competitiva",
     numero: "05",
+    realce: { destacar: ["nenhuma nova perda"] },
     titulo: "Resposta competitiva para o time comercial",
     tituloCompleto: "Resposta competitiva para o time comercial",
     card: {
@@ -847,9 +863,10 @@ export const CASES: CasePortfolio[] = [
       },
     ],
     imagem: {
-      arquivo: "case-05-promessa-clausula.svg",
-      proporcao: "16 / 9",
-      legenda: "Comparação entre a promessa comercial e as condições contratuais associadas a ela.",
+      arquivos: ["case-05-a.png", "case-05-b.png"],
+      proporcao: "1080 / 560",
+      legenda: "Da promessa comercial para o que o contrato realmente prevê.",
+      duracoes: [5500, 13000],
     },
   },
 ];

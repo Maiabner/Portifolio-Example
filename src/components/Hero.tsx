@@ -20,11 +20,11 @@ function ParCiclante() {
   return (
     <span className="inline-flex flex-wrap items-baseline gap-x-2">
       <span>Feito com</span>
-      <span key={`${i}-a`} className="animate-role-fade-in font-titulo italic" style={{ color: "var(--primary)" }}>
+      <span key={`${i}-a`} className="animate-role-fade-in font-titulo italic" style={{ color: "var(--accent)" }}>
         {atual.primeiro}
       </span>
       <span>e</span>
-      <span key={`${i}-b`} className="animate-role-fade-in font-titulo italic" style={{ color: "var(--primary)" }}>
+      <span key={`${i}-b`} className="animate-role-fade-in font-titulo italic" style={{ color: "var(--accent)" }}>
         {atual.segundo}<span className="not-italic font-sans text-[var(--text)]">.</span>
       </span>
     </span>
@@ -46,9 +46,10 @@ export function Hero() {
           {...entrada(0.25)}
           className="mt-6 max-w-[920px] text-[40px] md:text-[58px] lg:text-[64px] leading-[1.06] tracking-display font-medium"
         >
-          Construo a <span className="font-titulo italic font-normal" style={{ color: "var(--primary)" }}>operação</span> e
-          os <span className="font-titulo italic font-normal" style={{ color: "var(--primary)" }}>produtos</span> que fazem
-          a empresa vender<span style={{ color: "var(--accent)" }}>.</span>
+          Conecto <span className="font-titulo italic font-normal" style={{ color: "var(--accent)" }}>estratégia</span> e{" "}
+          <span className="font-titulo italic font-normal" style={{ color: "var(--accent)" }}>execução</span>
+          <span style={{ color: "var(--accent)" }}>.</span> Leio o gargalo que trava o resultado e construo o que o remove
+          <span style={{ color: "var(--accent)" }}>.</span>
         </motion.h1>
 
         <motion.p {...entrada(0.42)} className="mt-6 text-xl md:text-[26px] text-[var(--text)]">

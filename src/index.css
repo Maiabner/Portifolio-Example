@@ -1,26 +1,52 @@
-/* ===== TOKENS:START (paleta institucional azul + verde, inspirada no universo Votorantim) ===== */
+/* ===== TOKENS:START (Editorial Papel — base; Noir no data-theme="dark") ===== */
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
 
+/* PAPEL (versão base — abre automático) */
 :root {
-  --bg: #F7FAFC;
-  --surface: #FFFFFF;
-  --text: #102033;
-  --muted: #607086;
-  --border: #D7E2ED;
-  --primary: #0054A6;
-  --primary-deep: #063B78;
-  --primary-text: #FFFFFF;
-  --secondary: #EAF4FF;
-  --secondary-text: #004A8F;
-  --accent: #00A443;
-  --accent-soft: #EAF8EF;
-  --accent-text: #071F12;
-  --radius: 16px;
+  --bg: #F7F6F1;
+  --surface: #FCFBF7;
+  --surface-2: #F1EFE8;
+  --text: #292A2C;
+  --text-strong: #17181A;
+  --muted: #767A80;
+  --border: #E6E3DA;
+  --primary: #292A2C;
+  --primary-deep: #17181A;
+  --primary-text: #F7F6F1;
+  --secondary: #F1EFE8;
+  --secondary-text: #45484E;
+  --accent: #9C7C4A;
+  --accent-deep: #7E6236;
+  --accent-soft: #F3EFE6;
+  --accent-text: #292A2C;
+  --radius: 14px;
   --font-titulo: "Instrument Serif", Georgia, serif;
   --font-corpo: "Manrope", "Inter", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", Consolas, monospace;
-  --atencao: #D8A625;
-  --teal-deep: #06192E;
+  --atencao: #9C7C4A;
+  --teal-deep: #17181A;
+}
+
+/* NOIR (versão escura — via botão sol/lua) */
+:root[data-theme="dark"] {
+  --bg: #16171A;
+  --surface: #1B1C1F;
+  --surface-2: #202124;
+  --text: #EDEBE4;
+  --text-strong: #FFFFFF;
+  --muted: #9DA0A6;
+  --border: #2B2D31;
+  --primary: #EDEBE4;
+  --primary-deep: #F7F6F1;
+  --primary-text: #16171A;
+  --secondary: #202124;
+  --secondary-text: #C9C8C2;
+  --accent: #CBA871;
+  --accent-deep: #B8955F;
+  --accent-soft: #221F18;
+  --accent-text: #EDEBE4;
+  --atencao: #CBA871;
+  --teal-deep: #0C0D0F;
 }
 /* ===== TOKENS:END ===== */
 
@@ -38,6 +64,12 @@ body {
   color: var(--text);
   font-family: var(--font-corpo);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Transição suave ao alternar Papel <-> Noir */
+html.tema-pronto body,
+html.tema-pronto body * {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 .site-bg {
@@ -64,10 +96,10 @@ body {
   width: min(44vw, 620px);
   height: min(44vw, 620px);
   border-radius: 42% 58% 50% 50%;
-  opacity: 0.18;
+  opacity: 0.1;
   background:
-    radial-gradient(circle at 38% 36%, color-mix(in srgb, var(--primary) 54%, transparent) 0 18%, transparent 62%),
-    radial-gradient(circle at 68% 70%, color-mix(in srgb, var(--accent) 45%, transparent) 0 14%, transparent 58%);
+    radial-gradient(circle at 38% 36%, color-mix(in srgb, var(--accent) 42%, transparent) 0 18%, transparent 62%),
+    radial-gradient(circle at 68% 70%, color-mix(in srgb, var(--muted) 30%, transparent) 0 14%, transparent 58%);
 }
 .site-bg::after {
   left: -10vw;
@@ -75,10 +107,9 @@ body {
   width: min(36vw, 480px);
   height: min(32vw, 430px);
   border-radius: 58% 42% 48% 52%;
-  opacity: 0.13;
+  opacity: 0.08;
   background:
-    radial-gradient(circle at 42% 44%, color-mix(in srgb, var(--secondary) 84%, transparent) 0 28%, transparent 68%),
-    radial-gradient(circle at 72% 58%, color-mix(in srgb, var(--accent) 38%, transparent) 0 12%, transparent 58%);
+    radial-gradient(circle at 42% 44%, color-mix(in srgb, var(--accent) 30%, transparent) 0 28%, transparent 68%);
 }
 
 .font-titulo {
@@ -89,30 +120,32 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
-/* ---- Sombras studio-clean (multicamadas) ---- */
+/* ---- Foco de teclado visível (latão) ---- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Definição por fio de latão/hairline (Editorial: matéria, não sombra) ---- */
 .btn-primary-shadow {
-  box-shadow:
-    0 1px 2px 0 rgba(6, 59, 120, 0.12),
-    0 4px 4px 0 rgba(6, 59, 120, 0.1),
-    0 9px 6px 0 rgba(6, 59, 120, 0.06),
-    0 17px 7px 0 rgba(6, 59, 120, 0.02),
-    inset 0 2px 8px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 1px 2px rgba(23, 24, 26, 0.12);
 }
 .btn-secondary-shadow {
-  box-shadow:
-    0 0 0 0.5px rgba(16, 32, 51, 0.06),
-    0 4px 30px rgba(16, 32, 51, 0.08);
+  box-shadow: none;
+  border: 1px solid var(--border);
 }
 .card-clean {
-  box-shadow: 0 4px 16px rgba(16, 32, 51, 0.08);
+  box-shadow: none;
+  border: 1px solid var(--border);
 }
 .card-clean-lg {
-  box-shadow:
-    0 12px 40px rgba(16, 32, 51, 0.12),
-    0 4px 12px rgba(16, 32, 51, 0.06);
+  box-shadow: none;
+  border: 1px solid var(--border);
 }
 
 /* ---- Entradas por scroll ---- */
@@ -131,12 +164,12 @@ body {
   opacity: 0;
 }
 
-/* ---- Tipografia display (tracking negativo premium) ---- */
+/* ---- Tipografia display (tracking negativo editorial) ---- */
 .tracking-display {
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 .tracking-heading {
-  letter-spacing: 0;
+  letter-spacing: -0.015em;
 }
 
 /* ---- Ticker de habilidades (marquee com máscara nas bordas) ---- */
@@ -158,7 +191,6 @@ body {
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
 }
-
 
 /* ---- Marquee gigante (assinatura serif antes do contato) ---- */
 .marquee-giant .ticker-track {

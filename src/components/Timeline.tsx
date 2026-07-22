@@ -32,7 +32,7 @@ export function Timeline() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">02 — Trajetória</p>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">Trajetória</p>
           <h2 className="mt-3 text-3xl md:text-[46px] leading-tight font-medium tracking-heading">
             Formação e <span className="font-titulo italic font-normal">experiência</span>
           </h2>

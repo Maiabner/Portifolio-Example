@@ -4,13 +4,7 @@
 export function MarcaAM({ size = 38 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" aria-label="Marca Abner Maia">
-      <defs>
-        <linearGradient id="amMarkGradient" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
-          <stop stopColor="var(--primary)" />
-          <stop offset="1" stopColor="var(--primary-deep)" />
-        </linearGradient>
-      </defs>
-      <rect width="64" height="64" rx="17" fill="url(#amMarkGradient)" />
+      <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="none" stroke="var(--text)" strokeWidth="2.5" />
       <text
         x="27"
         y="43"
@@ -18,7 +12,7 @@ export function MarcaAM({ size = 38 }: { size?: number }) {
         fontFamily="var(--font-titulo)"
         fontStyle="italic"
         fontSize="34"
-        fill="var(--primary-text)"
+        fill="var(--text)"
       >
         am
       </text>

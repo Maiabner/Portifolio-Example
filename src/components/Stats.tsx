@@ -1,8 +1,24 @@
+import { Fragment } from "react";
 import { motion } from "framer-motion";
-import { Calculator, Package, ShieldCheck, TrendingUp } from "lucide-react";
 import { RESUMO_PONTOS } from "../dados";
 
-const ICONES = [TrendingUp, Package, Calculator, ShieldCheck];
+const ROMANOS = ["i", "ii", "iii", "iv", "v", "vi"];
+
+// Realça em latão os trechos de `destaque` dentro do texto, mantendo o resto no grafite.
+function realcar(texto: string, destaque?: string[]) {
+  if (!destaque || destaque.length === 0) return texto;
+  const escapados = destaque.map((d) => d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const re = new RegExp(`(${escapados.join("|")})`, "g");
+  return texto.split(re).map((parte, i) =>
+    destaque.includes(parte) ? (
+      <b key={i} className="font-medium text-[var(--accent)] [font-variant-numeric:tabular-nums]">
+        {parte}
+      </b>
+    ) : (
+      <Fragment key={i}>{parte}</Fragment>
+    )
+  );
+}
 
 export function Stats() {
   return (
@@ -13,9 +29,9 @@ export function Stats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-9 max-w-[640px]"
+          className="max-w-[640px]"
         >
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">05 — Resumo</p>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">Resumo</p>
           <h2 className="mt-3 text-3xl md:text-[44px] leading-tight font-medium tracking-heading">
             O que os casos <span className="font-titulo italic font-normal">demonstram</span>
           </h2>
@@ -25,26 +41,29 @@ export function Stats() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {RESUMO_PONTOS.map((item, i) => {
-            const Icon = ICONES[i] ?? TrendingUp;
-            return (
-              <motion.article
-                key={item.titulo}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-white rounded-[28px] card-clean p-7 flex flex-col gap-4"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[var(--secondary)] text-[var(--primary)]">
-                  <Icon size={20} strokeWidth={1.8} />
-                </span>
-                <h3 className="text-lg font-semibold leading-snug">{item.titulo}</h3>
-                <p className="text-sm leading-relaxed text-[var(--muted)]">{item.texto}</p>
-              </motion.article>
-            );
-          })}
+        <div className="mt-10 border-t border-[var(--border)]">
+          {RESUMO_PONTOS.map((item, i) => (
+            <motion.div
+              key={item.titulo}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-[auto_1fr] items-baseline gap-x-6 md:gap-x-12 border-b border-[var(--border)] py-7"
+            >
+              <span className="pt-1 font-mono text-sm tracking-wide text-[var(--accent)]">
+                {ROMANOS[i] ?? String(i + 1)}
+              </span>
+              <div>
+                <h3 className="font-titulo italic text-xl md:text-2xl leading-tight text-[var(--text)]">
+                  {item.titulo}
+                </h3>
+                <p className="mt-2 max-w-[66ch] text-sm md:text-base leading-relaxed text-[var(--muted)]">
+                  {realcar(item.texto, item.destaque)}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

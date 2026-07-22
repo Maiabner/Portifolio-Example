@@ -35,8 +35,8 @@ function TickerItem({ nome }: { nome: string }) {
   const Icon = TICKER_ICONS[nome] ?? FileText;
 
   return (
-    <span className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white/80 border border-[var(--border)] px-4 py-2 text-[13px] font-medium text-[var(--muted)] whitespace-nowrap">
-      <span className="grid h-5 w-5 place-items-center rounded-full bg-[var(--bg)] text-[var(--primary)]">
+    <span className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[var(--surface)] border border-[var(--border)] px-4 py-2 text-[13px] font-medium text-[var(--muted)] whitespace-nowrap">
+      <span className="grid h-5 w-5 place-items-center rounded-full bg-[var(--surface-2)] text-[var(--accent)]">
         <Icon size={12} strokeWidth={2} />
       </span>
       {nome}

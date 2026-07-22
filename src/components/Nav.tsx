@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { MarcaLockup } from "./Marca";
+import { ThemeToggle } from "./ThemeToggle";
 
 const LINKS = [
   ["Início", "#inicio"],
@@ -41,18 +42,21 @@ export function Nav() {
             <a
               key={href}
               href={href}
-              className="px-3.5 py-2 rounded-full text-sm text-[var(--muted)] hover:text-[var(--text)] hover:bg-white/70 transition-colors"
+              className="px-3.5 py-2 rounded-full text-sm text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--surface-2)] transition-colors"
             >
               {label}
             </a>
           ))}
         </div>
-        <a
-          href="#contato"
-          className="btn-primary-shadow hidden sm:inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-2 text-sm font-medium text-[var(--primary-text)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
-        >
-          Contato
-        </a>
+        <div className="flex items-center gap-2.5">
+          <ThemeToggle />
+          <a
+            href="#contato"
+            className="btn-primary-shadow hidden sm:inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-2 text-sm font-medium text-[var(--primary-text)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            Contato
+          </a>
+        </div>
       </nav>
     </header>
   );
